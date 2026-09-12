@@ -201,5 +201,27 @@
   <a class="btn" href="https://wa.me/5519998859795?text=Ol%C3%A1%2C%20Juarez%21%20Vi%20sua%20p%C3%A1gina%20de%20consultoria%20e%20quero%20entender%20como%20reduzir%20o%20aluguel%2FCTO%20da%20minha%20loja." style="width:100%;">Falar com o Juarez agora</a>
 </div>
 
+<script>
+// Identifica de qual campanha (Google/Meta Ads) o visitante veio, pelo parâmetro
+// ?camp= na URL final do anúncio, e ajusta a mensagem pré-preenchida do WhatsApp —
+// assim a primeira mensagem que chega já revela a origem, sem precisar de nenhuma
+// integração nova. Sem ?camp= (acesso direto, ou anúncio antigo), mantém o texto
+// genérico que já estava nos botões.
+(function () {
+  var mensagens = {
+    multa: "Olá, Juarez! Vim pelo anúncio Multa Contratual e quero entender como reduzir ou eliminar a multa do meu contrato.",
+    cto: "Olá, Juarez! Vim pelo anúncio de Redução de Aluguel/CTO e quero entender como reduzir o custo de ocupação da minha loja.",
+    contrato: "Olá, Juarez! Vim pelo anúncio de Análise de Contrato Novo e quero uma análise antes de assinar meu contrato no shopping."
+  };
+  var params = new URLSearchParams(window.location.search);
+  var camp = params.get("camp");
+  if (!camp || !mensagens[camp]) return;
+  var texto = encodeURIComponent(mensagens[camp]);
+  document.querySelectorAll('a[href^="https://wa.me/5519998859795"]').forEach(function (a) {
+    a.href = "https://wa.me/5519998859795?text=" + texto;
+  });
+})();
+</script>
+
 </body>
 </html>
